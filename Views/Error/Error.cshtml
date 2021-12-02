@@ -1,0 +1,23 @@
+﻿<div class="border-info card " style="color:brown;">
+	<h5 class="text-center display-1 d-block"> Exception Details</h5>
+	<a asp-controller="home" asp-action="index" class="btn btn-outline-success" style="width:auto;color:blue">Back to Home</a>
+</div>
+
+<div class="page-wrap d-flex flex-row align-items-center">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12  card ">
+				<span class="display-5 d-block">Exception Path</span>
+				<div class="mb-4 text-center">@ViewBag.ExceptionPath</div>
+			</div>
+			<div class="col-md-12  card">
+				<span class="display-5 d-block">Exception Message</span>
+				<div class="mb-4 text-center">@ViewBag.ExceptionMessage</div>
+			</div>
+			<div class="col-md-12  card">
+				<span class="display-5 d-block">Exception Stack Trace</span>
+				<div class="mb-4 text-center ">@ViewBag.StackTrace</div>
+			</div>
+		</div>
+	</div>
+</div>

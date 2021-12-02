@@ -1,0 +1,22 @@
+﻿@model HomeDetailsViewModel
+
+@*@model EmployeeManagement.Models.Employee;*@
+	@*<h1>@ViewData["PageTitle"]</h1>
+	@{ 
+		var emp = ViewData["Emp"] as EmployeeManagement.Models.Employee;
+	}*@
+	<h1>@Model.PageTitle</h1>
+	<table>
+		<tr>
+			<td>
+				@*ID:@ViewBag.Emp.Id*@
+				ID:@Model.Employee.Id
+			</td>
+			<td>
+				@*Name:@emp.Name*@
+				@*Name:@ViewBag.emp.Name*@
+				Name:@Model.Employee.Name
+			</td>
+		</tr>
+	</table>
+

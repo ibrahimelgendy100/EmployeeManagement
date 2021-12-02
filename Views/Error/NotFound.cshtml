@@ -1,0 +1,25 @@
+﻿
+@{
+	ViewBag.Title = "Not Found";
+}
+
+<div class="page-wrap d-flex flex-row align-items-center">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12 text-center">
+				<span class="display-1 d-block">404 Not Found</span>
+				<div class="mb-4 lead">
+					<span class="text-danger fw-bolder">@ViewBag.ErrorMessage</span>
+				</div>
+				@*<div class="mb-4 lead">
+					<span class="text-danger fw-bolder">@ViewBag.Path</span>
+				</div>
+				<div class="mb-4 lead">
+					<span class="text-danger fw-bolder">@ViewBag.QS</span>
+				</div>*@
+				<a asp-controller="home" asp-action="index" class="btn btn-outline-success" style="width:auto;color:blue">Back to Home</a>
+			</div>
+		</div>
+	</div>
+</div>
+
