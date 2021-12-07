@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Models;
 using EmployeeManagement.Models.EmployeeRepository;
 using EmployeeManagement.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
+	[Authorize]
 	[Route("[Controller]/[action]")]
 	public class HomeController:Controller
 	{
@@ -25,6 +27,8 @@ namespace EmployeeManagement.Controllers
 			_hostingEnvironment = hostingEnvironment;
 		}
 
+
+		[AllowAnonymous]
 		[Route("~/")]
 		[Route("~/Home")]
 		public ViewResult Index()
@@ -33,7 +37,7 @@ namespace EmployeeManagement.Controllers
 			return View(employees);
 			
 		}
-
+		[AllowAnonymous]
 		[Route("{id?}")]
 		public ViewResult Details(int?id) //jsonResult to objectResult
 		{
@@ -51,13 +55,13 @@ namespace EmployeeManagement.Controllers
 			};
 			return View(homeDetailsViewModel);
 		}
-
+		
 		[HttpGet]
 		public ViewResult Create()
 		{
 			return View();
 		}
-
+		
 		[HttpPost]
 		public ActionResult Create(EmpCreateViewModel model) 
 		{

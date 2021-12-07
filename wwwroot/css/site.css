@@ -1,7 +1,9 @@
 ﻿.btn{
 	width:75px;
 }
-
+.navbar {
+	background-color: rgba(0,0,0,0.5) !important;
+}
 .imageThumbnail {
 	height: 200px;
 	width: auto;

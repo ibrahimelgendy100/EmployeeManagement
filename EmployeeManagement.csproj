@@ -12,11 +12,13 @@
     <Compile Remove="Controllers\HomeController - Copy.cs" />
     <Compile Remove="Startup - Copy %282%29.cs" />
     <Compile Remove="Startup - Copy %283%29.cs" />
+    <Compile Remove="Startup - Copy %284%29.cs" />
     <Compile Remove="Startup - Copy.cs" />
     <Compile Remove="ViewModels\EmpCreateViewModel - Copy.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Account\Login - Copy.cshtml" />
     <Content Remove="Views\Home\Create - Copy %282%29.cshtml" />
     <Content Remove="Views\Home\Create - Copy.cshtml" />
     <Content Remove="Views\Home\Details - Copy.cshtml" />

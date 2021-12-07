@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AppUser>
+
+
+@{ 
+	ViewBag.Title = "All Users";
+}
+
+
+<div class="mt-4">
+	@if (Model.Any())
+	{
+		<a asp-controller="account" asp-action="register" class="btn btn-primary mb-3" style="width:auto">
+			Add new user
+		</a>
+		foreach (var user in Model)
+		{
+			<div class="card mb-3">
+				<div hidden class="card-header">
+					User Id:@user.Id
+				</div>
+				<div class="card-body text-center">
+					<h1 class="card-title">
+						@user.UserName
+					</h1>
+				</div>
+				<div class="card-footer text-center">
+					<a href="#" class="btn btn-danger">Edit</a>
+					<a href="#" class="btn btn-danger">Delete</a>
+				</div>
+			</div>
+		}
+	}
+	else
+	{
+		<div class="card">
+			<div class="card-header">
+				No roles created yet
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">
+					Use the button below to create a role
+				</h5>
+				<a class="btn btn-primary" style="width:auto"
+					 asp-controller="account" asp-action="register">
+					Add new user
+				</a>
+			</div>
+		</div>
+	}
+</div>

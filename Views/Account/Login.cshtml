@@ -1,0 +1,79 @@
+﻿@model LoginViewModel
+
+@{
+	ViewBag.Title = "Login";
+}
+
+@{
+	if (!(ViewBag.Error is null))
+	{
+		<h3 class="alert alert-danger">
+			@ViewBag.Error
+		</h3>
+	}
+}
+<link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+<link href="~/css/Login.css" rel="stylesheet" />
+<div class="container">
+	<div class="d-flex justify-content-center">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign In</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
+			<div class="container">
+				<div class="card-body">
+					<form method="post">
+
+						<div class="input-group mb-4 email">
+							<label asp-for="Email" class="col-sm-2 col-form-label"></label>
+							<div class="col-sm-10">
+								<input asp-for="Email" class="form-control" placeholder="Email">
+								<span asp-validation-for="Email" class="text-danger"></span>
+							</div>
+						</div>
+
+						<div class="input-group mb-4 password">
+							<label asp-for="Password" class="col-sm-2 col-form-label"></label>
+							<div class="col-sm-10">
+								<input asp-for="Password" class="form-control" placeholder="Password">
+								<span asp-validation-for="Password" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="row mb-5">
+							<div class="form-check remember">
+								<label asp-for="RememberMe" class="form-check-label ms-lg-3">
+									<input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+									@Html.DisplayNameFor(m => m.RememberMe)
+								</label>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-sm-10">
+								<button type="submit" class="btn btn-primary login_btn">Login</button>
+							</div>
+						</div>
+						<div  asp-validation-summary="All" class="text-danger"></div>
+					</form>
+				</div>
+				<div class="card-footer">
+					<div class="d-flex justify-content-center links">
+						Don't have an account?<a asp-controller="account" asp-action="register">Sign Up</a>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="#">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

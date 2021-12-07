@@ -1,10 +1,12 @@
 using EmployeeManagement.Data;
 using EmployeeManagement.Models;
 using EmployeeManagement.Models.EmployeeRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,14 +31,20 @@ namespace EmployeeManagement
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContextPool<DataContext>(options => options.UseSqlServer(_config.GetConnectionString("DataConnection")));
+			services.AddMvc(options=> {
+				var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+				options.Filters.Add(new AuthorizeFilter(policy));
+			});
+			services.AddScoped<IEmployeeRepository, SqlEmpRepository>();
 			services.AddMvc(options=>options.EnableEndpointRouting=false).AddXmlSerializerFormatters();
-			services.AddIdentity<IdentityUser, IdentityRole>(options =>
+			services.AddIdentity<AppUser, IdentityRole>(options =>
 			{
 				options.Password.RequiredLength = 10;
 				options.Password.RequiredUniqueChars = 3;
 				options.Password.RequireNonAlphanumeric = false;
 			}).AddEntityFrameworkStores<DataContext>();
-			services.AddScoped<IEmployeeRepository, SqlEmpRepository>();
+			
+			
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,7 @@ namespace EmployeeManagement
 			app.UseRouting();	
 			app.UseStaticFiles();
 			app.UseAuthentication();
+			app.UseAuthorization();
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
